@@ -42,7 +42,7 @@ app.use(express.json());
 
 const findIndex = (arr, id) => {
   const index = arr.findIndex((i) =>{
-     return i.id === id;
+     i.id === id;
   })
   return index;
 };

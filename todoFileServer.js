@@ -30,6 +30,7 @@
 
   Testing:
   You can use tools like Postman or curl to test the API endpoints by making HTTP requests to the server.
+
   Note: Make sure to have the "todos.json" file with an empty array (`[]`) initially, and the server will update this file based on the CRUD operations.
 **/
 const express = require("express");
@@ -40,9 +41,7 @@ const app = express();
 app.use(express.json());
 
 const findIndex = (arr, id) => {
-  const index = arr.findIndex((i) =>{
-     i.id === id;
-  })
+  const index = arr.findIndex((i) => i.id === id);
   return index;
 };
 app.get("/todos", (req, res) => {
@@ -62,7 +61,7 @@ app.get("/todos/:id", (req, res) => {
     }
 
     const todos = JSON.parse(data);
-    const todoIndex = findIndex(todos, parseInt(req.params.id));
+    const todoIndex = findIndex(todos, parseInt(req.param.id));
 
     if (todoIndex === -1) {
       return res.status(404).send("Todo not found");
@@ -97,7 +96,7 @@ app.put("/todos/:id", (req, res) => {
     if (todo_index === -1) res.status(404).json({ message: "not found" });
     todos[todo_index].title = req.body.title;
     todos[todo_index].description = req.body.description;
-    fs.writeFile("todos.json", "utf-8", JSON.stringify(todos), (err) => {
+    fs.writeFile("todos.json", JSON.stringify(todos), "utf-8", (err) => {
       if (err) throw err;
       res.status(200).json(todos[todo_index]);
     });
@@ -113,13 +112,13 @@ app.delete("/todos/:id", (req, res) => {
       res.status(404).json({ message: "not found" });
     }
     todos.splice(todo_index, 1);
-    fs.writeFile("todos.json", "utf-8", JSON.stringify(todos), (err) => {
+    fs.writeFile("todos.json", JSON.stringify(todos), "utf-8", (err) => {
       if (err) throw err;
-      res.status(200).json({ message: "not found" });
+      res.status(200).json({ message: "deleted successfully" });
     });
   });
 });
+
 app.listen(3000, () => {
   console.log("runnning");
 });
-

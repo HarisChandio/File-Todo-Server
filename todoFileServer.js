@@ -30,7 +30,6 @@
 
   Testing:
   You can use tools like Postman or curl to test the API endpoints by making HTTP requests to the server.
-
   Note: Make sure to have the "todos.json" file with an empty array (`[]`) initially, and the server will update this file based on the CRUD operations.
 **/
 const express = require("express");

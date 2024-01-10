@@ -1,38 +1,4 @@
-/**
-  You need to create an Express HTTP server in Node.js which will handle the logic of a TODO list API.
-   The server uses the built-in Node.js `fs` module for file operations and `body-parser` middleware
-    to parse JSON in the request body.
 
-  The expected API endpoints are defined below,
-  1. GET /todos - Returns a list of TODOs stored in the "todos.json" file.
-    Response: 200 OK with an array of TODOs in JSON format.
-    Example: GET http://localhost:3000/todos
-
-  2. GET /todos/:id - Returns the TODO with the specified ID from the "todos.json" file.
-     Response: 200 OK with the TODO as the response body if found, or 404 Not Found if not found. Should return an empty response body and status text "Not Found" if the TODO is not found.
-     Example: GET http://localhost:3000/todos/123
-
-  3. POST /todos - Adds a new TODO to the "todos.json" file.
-    Request Body: JSON object with "title" and "description" fields.
-    Response: 201 Created with the newly created TODO in JSON format.
-    Example: POST http://localhost:3000/todos
-
-  4. PUT /todos/:id - Updates the TODO with the specified ID in the "todos.json" file.
-    Request Body: JSON object with "title" and "description" fields.
-    Response: 200 OK with the updated TODO in JSON format if found, or 404 Not Found if the TODO is not found. Should return an empty response body and status text "Not Found" if the TODO is not found.
-    Example: PUT http://localhost:3000/todos/123
-
-  5. DELETE /todos/:id - Deletes the TODO with the specified ID from the "todos.json" file.
-    Response: 200 OK if the TODO is found and deleted, or 404 Not Found if the TODO is not found. Should return an empty response body and status text "Not Found" if the TODO is not found.
-    Example: DELETE http://localhost:3000/todos/123
-
-  - For any other route not defined in the server, return 404 Not Found.
-
-  Testing:
-  You can use tools like Postman or curl to test the API endpoints by making HTTP requests to the server.
-
-  Note: Make sure to have the "todos.json" file with an empty array (`[]`) initially, and the server will update this file based on the CRUD operations.
-**/
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
